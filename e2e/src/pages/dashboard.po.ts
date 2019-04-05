@@ -9,22 +9,15 @@ export class DashboardPage {
     return browser.get('/dashboard');
   }
 
-  searchFor(term: string) {
-    this.searchInput.sendKeys(term);
+  searchFor(criteria: string) {
+    return this.searchInput.sendKeys(criteria);
   }
 
   getSearchResults() {
-    const results =  this.searchResults.map((elm, index) => {
-      return {
-        index: index,
-        text: elm.getText()
-      };
-    });
-
-    return results;
+    return this.searchResults.getText();
   }
 
   clickSearchResult(index: number) {
-    this.searchResults.get(index).click();
+    return this.searchResults.get(index).click();
   }
 }

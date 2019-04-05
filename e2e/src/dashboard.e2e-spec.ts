@@ -1,5 +1,5 @@
 import { DashboardPage } from './pages/dashboard.po';
-import { browser, logging } from 'protractor';
+import { browser } from 'protractor';
 import { HeroDetailPage } from './pages/hero-detail.po';
 
 describe('Dashboard page', () => {
