@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "outFiles": [
+                "/Users/damanda/projects/angular-e2e/angular-e2e-quickstart/dist/out-tsc/**/*.js"
+            ],
+            "program": "/Users/damanda/projects/angular-e2e/angular-e2e-quickstart/node_modules/protractor/bin/protractor",
+            "args": ["/Users/damanda/projects/angular-e2e/angular-e2e-quickstart/protractorConfig.js"],
+        }
+    ]
+}

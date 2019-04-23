@@ -5,15 +5,16 @@ exports.config = {
   allScriptsTimeout: 11000,
   capabilities: {
     'browserName': 'chrome',
-    chromeOptions: {
-      args: [ "--headless", "--disable-gpu" ]
-    },
+    // chromeOptions: {
+    //   args: [ "--headless", "--disable-gpu" ]
+    // },
   },
   specs: [
     './src/features/*.feature'
   ],
   directConnect: true,
-  baseUrl: 'http://localhost:4200/',
+  // baseUrl: 'http://localhost:4200/',
+  baseUrl: 'https://e2e-dot-gweb-gfw-oort-forecast-stage.appspot.com',
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
   cucumberOpts: {
@@ -21,7 +22,7 @@ exports.config = {
     tags: [], // Specific features or scenarios
     strict: true,
     'dry-run': false,
-    compiler: [],   
+    compiler: [],
   },
   onPrepare() {
     require('ts-node').register({
