@@ -1,0 +1,94 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Heroes
+  description: Marvel Heroes API
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+definitions:
+  hero:
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        minLength: 4
+        pattern: "^[a-zA-Z0-9- ]+$"
+
+parameters:
+  heroId:
+    name: heroId
+    in: path
+    description: Id of the hero
+    required: true
+    type: integer
+
+paths:
+  /api/heroes:
+    get:
+      description: Returns all heroes, optionally filtered by one or more criteria
+      operationId: findHeroes
+      responses:
+        default:
+          description: Returns the matching heroes
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/hero"
+
+    post:
+      description: Add a new hero
+      parameters:
+        - name: hero
+          in: body
+          description: The hero info
+          required: true
+          schema:
+            $ref: "#/definitions/hero"
+      responses:
+        200:
+          description: OK
+
+    put:
+      description: Updates a hero by id
+      parameters:
+        - name: hero
+          in: body
+          description: The updated hero info
+          required: true
+          schema:
+            $ref: "#/definitions/hero"
+      responses:
+        default:
+          description: Returns the updated hero data
+          schema:
+            $ref: "#/definitions/hero"
+
+  /api/heroes/{heroId}:
+    parameters:
+      - $ref: "#/parameters/heroId"
+
+    get:
+      description: Returns a hero by id
+      operationId: findHeroById
+      responses:
+        default:
+          description: Returns the hero data
+          schema:
+            $ref: "#/definitions/hero"
+
+    delete:
+      description: Deletes a single hero based on the id supplied
+      operationId: deleteHero
+      responses:
+        default:
+          description: Returns the hero that was deleted
+          schema:
+            $ref: "#/definitions/hero"
